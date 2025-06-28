@@ -30,10 +30,13 @@ A Flutter-based mobile application designed to help you **stay prepared** during
 1. Clone the repo:
    ```bash
    git clone https://github.com/tom-robinsonuk/survival_app.git
-   cd survival_app```
+   cd survival_app
 
 2. Install dependencies:
-   ```flutter pub get```
+   ```bash
+      flutter pub get
 
 3. Run on emulator or device:
-    ```flutter run```
+   ```bash
+      flutter run
+
