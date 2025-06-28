@@ -67,12 +67,6 @@ ios/      ← native wrapper
 
 ---
 
-## 🧼 Cleanup
-
-This repo is designed to stay **lightweight** — no unnecessary scaffolding, no bloated dependencies. Just clean code and survival logic.
-
----
-
 ## ❤️ Author
 
 Made with 💻 + ☕ by TDRobinsonUK  
