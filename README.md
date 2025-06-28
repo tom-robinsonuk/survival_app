@@ -1,6 +1,6 @@
 # 🧭 Survival App
 
-A Flutter-based mobile application designed to help you **stay prepared** during emergencies, natural disasters, and survival situations. Whether you're facing a blackout, storm, or just prepping your go-bag — this app has you covered.
+A Flutter-based mobile application designed to help you **stay prepared** during emergencies, natural disasters, and survival situations. Whether you're facing a blackout, storm, or just prepping your go-bag! this app has you covered.
 
 ---
 
@@ -31,12 +31,48 @@ A Flutter-based mobile application designed to help you **stay prepared** during
    ```bash
    git clone https://github.com/tom-robinsonuk/survival_app.git
    cd survival_app
+   ```
 
 2. Install dependencies:
    ```bash
-      flutter pub get
+   flutter pub get
+   ```
 
 3. Run on emulator or device:
    ```bash
-      flutter run
+   flutter run
+   ```
 
+---
+
+## 📂 Folder Structure (Minimalist)
+
+```
+lib/
+ ├── main.dart
+ ├── screens/
+ ├── widgets/
+test/
+android/  ← native wrapper
+ios/      ← native wrapper
+```
+
+---
+
+## 🤖 Platform Notes
+
+- Android fully supported (tested on emulator + device)
+- iOS not yet tested — future support planned
+- Web port is temporarily removed to reduce bloat, will return when needed
+
+---
+
+## 🧼 Cleanup
+
+This repo is designed to stay **lightweight** — no unnecessary scaffolding, no bloated dependencies. Just clean code and survival logic.
+
+---
+
+## ❤️ Author
+
+Made with 💻 + ☕ by TDRobinsonUK  
