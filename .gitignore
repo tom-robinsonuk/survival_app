@@ -1,0 +1,38 @@
+# === GENERAL ===
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.build/
+build/
+.history
+.svn/
+.atom/
+.swiftpm/
+migrate_working_dir/
+
+# === IDEs ===
+*.iml
+.idea/
+*.ipr
+*.iws
+.vscode/  # Uncomment if you don't want VS Code settings in Git
+
+# === FLUTTER / DART ===
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# === ANDROID BUILD ===
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# === SYMBOLICATION / OBFUSCATION ===
+app.*.symbols
+app.*.map.json
