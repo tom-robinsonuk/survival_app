@@ -2,25 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'dart:math';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:survival_app/utils/user_profile.dart';
+import 'package:intl/intl.dart';
 
-class HomeScreen extends StatelessWidget {
+String formattedNow() => DateFormat('dd-MM-yyyy HH:mm').format(DateTime.now());
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> features = [
     {'label': 'Safe Room', 'icon': Icons.shield},
     {'label': 'Offline AI', 'icon': Icons.memory},
     {'label': 'Stockpile', 'icon': Icons.inventory},
     {'label': 'Tools', 'icon': Icons.build},
   ];
+  double threat = 0.85; // default
+  Color get glow => (threat < 0.50)
+      ? Colors.greenAccent
+      : (threat < 0.80)
+      ? Colors.orangeAccent
+      : Colors.redAccent;
 
-  HomeScreen({super.key});
+  //  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double threat = 0.45; // 0.0‒1.0 – change this value to test
-    Color glow = (threat < 0.50)
-        ? Colors.greenAccent
-        : (threat < 0.80)
-        ? Colors.orangeAccent
-        : Colors.redAccent;
+    // TEMP: Fake Profile
+    UserProfile.saveProfile("London", "UK");
+
+    // TEMP: Load and print it to console
+    UserProfile.loadProfile().then((profile) {
+      print("User location: ${profile['city']}, ${profile['country']}");
+    });
+
     return Scaffold(
       appBar: AppBar(title: Text('Survival Dashboard'), centerTitle: true),
       body: Column(
@@ -36,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'DOOM',
+                      'Threat Level',
                       style: GoogleFonts.orbitron(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -195,6 +214,22 @@ class HomeScreen extends StatelessWidget {
                       }),
                     ],
                   ),
+                ),
+                const SizedBox(height: 4),
+                FutureBuilder<Map<String, String?>>(
+                  future: UserProfile.loadProfile(), // we made this in step 1
+                  builder: (context, snapshot) {
+                    final city = snapshot.data?['city'] ?? 'Unknown';
+                    final country = snapshot.data?['country'] ?? '';
+                    final stamp = formattedNow(); // local device time
+                    return Text(
+                      '$city, $country – last live status check: $stamp',
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Colors.white.withValues(alpha: 0.7),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
